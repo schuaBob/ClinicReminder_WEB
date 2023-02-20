@@ -19,10 +19,7 @@ export class DashboardComponent implements OnInit{
 
   constructor(private breakpointObserver: BreakpointObserver, private http: HttpClient, private doctorService: DoctorService) {}
   ngOnInit(): void {
-    const userJson = localStorage.getItem("user");
-    const id = userJson ? JSON.parse(userJson)["id"] : 0;
-    this.doctorService.listPatients(id);
-
+    this.doctorService.listPatients();
   }
 
 }

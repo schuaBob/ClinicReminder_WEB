@@ -21,11 +21,13 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BaseUrlInterceptor } from './config/baseurl-interceptor';
 import { environment } from 'src/environments/environment';
+import { PostReminderComponent } from './post-reminder/post-reminder.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    PostReminderComponent
   ],
   imports: [
     BrowserModule,

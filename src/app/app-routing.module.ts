@@ -3,9 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './config/auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
+import { PostReminderComponent } from './post-reminder/post-reminder.component';
 const routes: Routes = [
-  { path: '', component: DashboardComponent, canActivate: [AuthGuard]},
-  { path: 'login', component: LoginComponent}
+  { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
+  { path: 'post-reminder', component: PostReminderComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

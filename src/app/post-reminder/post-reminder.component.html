@@ -1,0 +1,56 @@
+<div class="container">
+  <form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+    <mat-card class="shipping-card">
+      <mat-card-header>
+        <mat-card-title>Shipping Information</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Description</mat-label>
+              <textarea matInput formControlName="description"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-select placeholder="Patient" formControlName="patient">
+                <mat-option *ngFor="let patient of patients" [value]="patient.id">
+                  {{ patient.name }}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="addressForm.controls['patient'].hasError('required')">
+                Patient is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Duration" formControlName="duration">
+            </mat-form-field>
+            <mat-error *ngIf="addressForm.controls['duration'].hasError('required')">
+              Duration is <strong>required</strong>
+            </mat-error>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-select placeholder="Priority" formControlName="priority">
+                <mat-option *ngFor="let priority of priorities" [value]="priority">
+                  {{ priority }}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="addressForm.controls['priority'].hasError('required')">
+                Priority is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit">Submit</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>
