@@ -12,6 +12,11 @@ export interface ReminderRow {
   middle: number;
   low: number;
 }
+export interface ReminderHistory {
+  date: string;
+  count: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -35,5 +40,10 @@ export class ReminderService {
   }
   listReminders(): Observable<ReminderRow[]>{
     return this.http.get<ReminderRow[]>(this.url);
+  }
+  unFinishedReminders(patientId: number): Observable<ReminderHistory[]>{
+    return this.http.get<ReminderHistory[]>(`${this.url}/history`, {params:{
+      id: patientId
+    }})
   }
 }

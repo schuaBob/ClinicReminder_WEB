@@ -33,7 +33,7 @@ export class ReminderListComponent implements OnInit {
     })
   }
   showDetails(id: number) {
-    this.route.navigate(["/reminder", id, "history"])
+    this.route.navigateByUrl(`/reminder/${id}/history`);
   }
 
 }
