@@ -16,7 +16,6 @@ export class HistoryComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.reminderService.unFinishedReminders(Number.parseInt(params['patientId'])).subscribe({
         next: (element) => {
-          console.log(element)
           const labels = element.map((val)=>{return val.date});
           const data = element.map((val)=>{return val.count});
           this.createChart(params['patientId'], labels, data)

@@ -20,7 +20,6 @@ export class LoginComponent {
 
 
   onSubmit(): void {
-    console.log("submit")
     this.loginService.signin(this.loginForm.value['username'], this.loginForm.value['password'])
   }
 }

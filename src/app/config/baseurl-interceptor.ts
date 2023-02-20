@@ -14,7 +14,6 @@ export class BaseUrlInterceptor implements HttpInterceptor {
                 'Content-Type': 'application/json'
             }, body: JSON.stringify(req.body), withCredentials: true
         });
-        console.log(apiReq.body)
         return next.handle(apiReq);
     }
 
