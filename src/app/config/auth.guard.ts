@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from "@angular/router";
-
+import { CookieService } from "ngx-cookie-service";
 
 @Injectable({
     providedIn: 'root'
@@ -8,8 +8,10 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTr
 export class AuthGuard implements CanActivate {
     constructor(private router: Router) { }
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        const token = "sfkshdfjhskdf"
-        if (token) {
+
+        const logined = localStorage.getItem("user");
+        console.log(logined)
+        if (logined) {
             console.log("Let Pass")
             return true;
         } else {

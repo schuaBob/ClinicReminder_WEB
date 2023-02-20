@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 import { first } from 'rxjs/operators';
 
 import { Doctor } from '../models/doctor';
 
 import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
@@ -16,16 +17,19 @@ export class LoginService {
   constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) { }
 
   signin(username: string, password: string) {
-    return this.http.post<Doctor>(this.url, {
+    this.http.post<Doctor>(this.url, {
       username,
       password
     }).pipe(first()).subscribe({
-      next: () => {
-        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-        this.router.navigateByUrl(returnUrl);
+      next: (value) => {
+        localStorage.setItem("user", JSON.stringify(value));
       },
       error: (error) => {
         console.error(error)
+      },
+      complete: () => {
+        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        this.router.navigateByUrl(returnUrl);
       }
     });
   }
