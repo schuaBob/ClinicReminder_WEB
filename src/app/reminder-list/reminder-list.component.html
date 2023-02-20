@@ -1,0 +1,30 @@
+<div class="container">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+        <!-- Position Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Patient Name</th>
+            <td mat-cell *matCellDef="let element">{{element.pname}}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="high">
+            <th mat-header-cell *matHeaderCellDef>Unfinished High Priority Reminder</th>
+            <td mat-cell *matCellDef="let element">{{element.high}}</td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="middle">
+            <th mat-header-cell *matHeaderCellDef>Unfinished Middle Priority Reminder</th>
+            <td mat-cell *matCellDef="let element">{{element.middle}}</td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="low">
+            <th mat-header-cell *matHeaderCellDef>Unfinished Low Priority Reminder</th>
+            <td mat-cell *matCellDef="let element">{{element.low}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="showDetails(row.patient_id)"></tr>
+    </table>
+</div>

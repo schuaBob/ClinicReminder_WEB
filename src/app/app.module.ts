@@ -22,18 +22,24 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BaseUrlInterceptor } from './config/baseurl-interceptor';
 import { environment } from 'src/environments/environment';
 import { PostReminderComponent } from './post-reminder/post-reminder.component';
+import { ReminderListComponent } from './reminder-list/reminder-list.component';
+import {MatTableModule} from '@angular/material/table';
+import { HistoryComponent } from './history/history.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    PostReminderComponent
+    PostReminderComponent,
+    ReminderListComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatTableModule,
     MatInputModule,
     MatGridListModule,
     MatCardModule,
@@ -46,7 +52,7 @@ import { PostReminderComponent } from './post-reminder/post-reminder.component';
     MatListModule,
     MatSelectModule,
     MatRadioModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     {

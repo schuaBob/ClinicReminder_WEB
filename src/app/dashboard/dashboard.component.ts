@@ -17,9 +17,9 @@ export class DashboardComponent implements OnInit{
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private http: HttpClient, private doctorService: DoctorService) {}
+  constructor(private breakpointObserver: BreakpointObserver) {}
   ngOnInit(): void {
-    this.doctorService.listPatients();
+    
   }
 
 }

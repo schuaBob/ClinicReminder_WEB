@@ -1,7 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Reminder } from '../models/reminder';
 
+
+export interface ReminderRow {
+  patient_id: number;
+  pname: String;
+  high: number;
+  middle: number;
+  low: number;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -23,5 +33,7 @@ export class ReminderService {
       }
     })
   }
-
+  listReminders(): Observable<ReminderRow[]>{
+    return this.http.get<ReminderRow[]>(this.url);
+  }
 }
