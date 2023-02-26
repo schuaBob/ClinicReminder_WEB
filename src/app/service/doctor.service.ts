@@ -12,7 +12,7 @@ export class DoctorService {
   constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) { }
 
   listPatients(): Observable<Patient[]> {
-    return this.http.get<Patient[]>(`${this.url}/list/patients`)
+    return this.http.get<Patient[]>(`${this.url}/patients`)
   }
 
 }

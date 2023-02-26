@@ -21,7 +21,7 @@ export interface ReminderHistory {
   providedIn: 'root'
 })
 export class ReminderService {
-  url = 'api/reminder'
+  url = 'api/doctor'
   constructor(private http: HttpClient, private router: Router) { }
   createReminder(description: String, patient: number, duration: number, priority: String) {
     this.http.post(this.url, {
@@ -38,12 +38,14 @@ export class ReminderService {
       }
     })
   }
-  listReminders(): Observable<ReminderRow[]>{
-    return this.http.get<ReminderRow[]>(this.url);
+  listReminders(): Observable<ReminderRow[]> {
+    return this.http.get<ReminderRow[]>(`${this.url}/reminders`);
   }
-  unFinishedReminders(patientId: number): Observable<ReminderHistory[]>{
-    return this.http.get<ReminderHistory[]>(`${this.url}/history`, {params:{
-      id: patientId
-    }})
+  unFinishedReminders(patientId: number): Observable<ReminderHistory[]> {
+    return this.http.get<ReminderHistory[]>(`${this.url}/reminders/history`, {
+      params: {
+        id: patientId
+      }
+    })
   }
 }
