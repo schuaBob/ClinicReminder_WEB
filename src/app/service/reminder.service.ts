@@ -24,7 +24,7 @@ export class ReminderService {
   url = 'api/doctor'
   constructor(private http: HttpClient, private router: Router) { }
   createReminder(description: String, patient: number, duration: number, priority: String) {
-    this.http.post(this.url, {
+    this.http.post(`api/reminder`, {
       description,
       patient,
       duration,
